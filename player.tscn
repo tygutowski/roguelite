@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://f04q8wj5ij0q"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_kvuie"]
+[ext_resource type="Texture2D" uid="uid://bc5xvd012bn68" path="res://character-spritesheet.png" id="2_thryd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_54xwu"]
+size = Vector2(22, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4cdiv"]
+size = Vector2(22, 32)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_kvuie")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_54xwu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_thryd")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_4cdiv")
+
+[node name="Anchor" type="Node2D" parent="."]
+
+[node name="Hand" type="Sprite2D" parent="Anchor"]
