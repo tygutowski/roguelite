@@ -13,7 +13,7 @@ var speed_randomness = 2.0
 @onready var pellet_scene = preload("res://pellet.tscn") 
 @onready var level = get_tree().get_first_node_in_group("level")
 var frames_between_shots
-var frames_since_last_shot
+var frames_since_last_shot = 0
 
 func start_using():
 	update_stats()
@@ -28,6 +28,7 @@ func _process(_delta):
 	if shooting && frames_since_last_shot >= frames_between_shots:
 		for pellet in pellets:
 			instance_pellet()
+		frames_since_last_shot = 0
 
 func instance_pellet():
 	var projectile = pellet_scene.instantiate()

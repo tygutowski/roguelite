@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cnci5ep6sbrot"]
+[gd_scene load_steps=3 format=3 uid="uid://c7b3utgkp1rhb"]
 
 [ext_resource type="Texture2D" uid="uid://c723ico3etif4" path="res://shotgun-sprite.png" id="1_bwfje"]
+[ext_resource type="Script" path="res://shotgun.gd" id="1_j63s4"]
 
 [node name="Handle" type="Node2D"]
+script = ExtResource("1_j63s4")
 
 [node name="Barrel" type="Node2D" parent="."]
 

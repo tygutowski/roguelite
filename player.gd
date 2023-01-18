@@ -13,8 +13,17 @@ var defensive
 var base_attack_speed = 1 # in shots per second
 var attack_speed_modifier = 1
 
+var potential_abilities = {
+	"primary": null,
+	"secondary": null,
+	"mobility": null,
+	"offensive": null,
+	"defensive": null
+	}
+
 func _ready():
 	primary = load("res://shotgun.tscn").instantiate()
+	potential_abilities["primary"] = primary
 	add_child(primary)
 
 func get_input():
@@ -31,12 +40,10 @@ func _physics_process(delta):
 		velocity = velocity.lerp(Vector2.ZERO, friction)
 	move_and_slide()
 
-var potential_inputs = ["primary", "secondary", "mobility", "offensive", "defensive"]
-var potential_abilities = [primary, secondary, mobility, offensive, defensive]
-
 func _process(_delta):
-	for i in range(len(potential_inputs)):
-		if Input.is_action_just_pressed(potential_inputs[i]) && potential_abilities[i]:
-			potential_abilities[i].start_using()
-		elif Input.is_action_just_released(potential_inputs[i]) && potential_abilities[i]:
-			potential_abilities[i].stop_using()
+	for ability in potential_abilities:
+		print(ability)
+		if Input.is_action_just_pressed(ability) && potential_abilities[ability]:
+			potential_abilities[ability].start_using()
+		elif Input.is_action_just_released(ability) && potential_abilities[ability]:
+			potential_abilities[ability].stop_using()
