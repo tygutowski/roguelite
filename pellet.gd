@@ -7,6 +7,6 @@ func _physics_process(delta):
 	global_position += velocity
 
 func _on_area_entered(area):
-	if area == "enemy_hitbox":
+	if area.is_in_group("enemy_hitbox"):
 		area.get_parent().take_damage(damage) # enemy takes damage
 		queue_free()

@@ -6,8 +6,8 @@ var shooting = false
 
 var spread = 10.0 # in degrees
 var pellets = 10
-var projectile_speed = 10.0
-var speed_randomness = 2.0
+var projectile_speed = 1.0
+var speed_randomness = 1.0
 
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var pellet_scene = preload("res://pellet.tscn") 
@@ -24,8 +24,9 @@ func stop_using():
 
 func _process(_delta):
 	rotation = get_angle_to(get_global_mouse_position())
-	frames_since_last_shot -= 1
+	frames_since_last_shot += 1
 	if shooting && frames_since_last_shot >= frames_between_shots:
+		print("shoot")
 		for pellet in pellets:
 			instance_pellet()
 		frames_since_last_shot = 0

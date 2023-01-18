@@ -42,7 +42,6 @@ func _physics_process(delta):
 
 func _process(_delta):
 	for ability in potential_abilities:
-		print(ability)
 		if Input.is_action_just_pressed(ability) && potential_abilities[ability]:
 			potential_abilities[ability].start_using()
 		elif Input.is_action_just_released(ability) && potential_abilities[ability]:
