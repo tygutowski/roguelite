@@ -24,7 +24,7 @@ var potential_abilities = {
 func _ready():
 	primary = load("res://shotgun.tscn").instantiate()
 	potential_abilities["primary"] = primary
-	add_child(primary)
+	get_node("Abilities").add_child(primary)
 
 func get_input():
 	var input = Vector2()
