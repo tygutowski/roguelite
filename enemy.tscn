@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0gtpk0h0o446"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_107ix"]
+[ext_resource type="Texture2D" uid="uid://brd8v8k7oxiv4" path="res://enemy-spritesheet.png" id="1_kiswg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vgux"]
+size = Vector2(24, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ytmb2"]
+size = Vector2(24, 32)
+
+[node name="Node2D" type="Node2D" groups=["enemy"]]
+script = ExtResource("1_107ix")
+
+[node name="hitbox" type="Area2D" parent="." groups=["enemy_hitbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("RectangleShape2D_1vgux")
+
+[node name="hurtbox" type="Area2D" parent="." groups=["enemy_hurtbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+shape = SubResource("RectangleShape2D_ytmb2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_kiswg")

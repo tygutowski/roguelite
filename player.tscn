@@ -9,7 +9,7 @@ size = Vector2(22, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4cdiv"]
 size = Vector2(22, 32)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_kvuie")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -26,7 +26,3 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_4cdiv")
-
-[node name="Anchor" type="Node2D" parent="."]
-
-[node name="Hand" type="Sprite2D" parent="Anchor"]

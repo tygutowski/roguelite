@@ -91,7 +91,7 @@ sources/3 = SubResource("TileSetAtlasSource_r35sx")
 
 [node name="World" type="Node2D"]
 
-[node name="Level" type="Node2D" parent="."]
+[node name="Level" type="Node2D" parent="." groups=["level"]]
 
 [node name="TileMap" type="TileMap" parent="Level"]
 texture_filter = 1
