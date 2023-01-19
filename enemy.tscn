@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0gtpk0h0o446"]
+[gd_scene load_steps=5 format=3 uid="uid://bo4dpftm14fcp"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_107ix"]
 [ext_resource type="Texture2D" uid="uid://brd8v8k7oxiv4" path="res://enemy-spritesheet.png" id="1_kiswg"]
@@ -13,6 +13,8 @@ size = Vector2(24, 32)
 script = ExtResource("1_107ix")
 
 [node name="hitbox" type="Area2D" parent="." groups=["enemy_hitbox"]]
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
 shape = SubResource("RectangleShape2D_1vgux")

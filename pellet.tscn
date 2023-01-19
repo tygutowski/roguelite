@@ -1,19 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://b0nvf38og7bxa"]
+[gd_scene load_steps=4 format=3 uid="uid://ca06efd58phn2"]
 
 [ext_resource type="Texture2D" uid="uid://binu8j2hhmt7a" path="res://projectile-sprite.png" id="1_eqa1k"]
 [ext_resource type="Script" path="res://pellet.gd" id="1_rkiet"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2flqt"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gam1x"]
 size = Vector2(4, 4)
 
 [node name="Area2D" type="Area2D"]
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("1_rkiet")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_2flqt")
+shape = SubResource("RectangleShape2D_gam1x")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("1_eqa1k")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
