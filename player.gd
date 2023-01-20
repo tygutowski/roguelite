@@ -25,7 +25,11 @@ func _ready():
 	primary = load("res://shotgun.tscn").instantiate()
 	potential_abilities["primary"] = primary
 	get_node("Abilities").add_child(primary)
-
+	
+	offensive = load("res://wormhole.tscn").instantiate()
+	potential_abilities["offensive"] = offensive
+	get_node("Abilities").add_child(offensive)
+	
 func get_input():
 	var input = Vector2()
 	var y_axis = Input.get_action_raw_strength('down') - Input.get_action_raw_strength('up')
