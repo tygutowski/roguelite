@@ -1,35 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://bjh1x5ah6sc0n"]
+[gd_scene load_steps=3 format=3 uid="uid://m3bqqtxjli2x"]
 
 [ext_resource type="Texture2D" uid="uid://campdu4sr2yp7" path="res://wormhole.png" id="1_l7qry"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_aekrt"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bv7xg"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y8j2p"]
+[node name="Area2D" type="Area2D"]
+collision_layer = 4
+collision_mask = 4
 
-[node name="Node2D" type="Node2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bv7xg")
 
-[node name="WormholeA" type="Node2D" parent="."]
-
-[node name="Wormhole" type="Sprite2D" parent="WormholeA"]
+[node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("1_l7qry")
-
-[node name="Area2D" type="Area2D" parent="WormholeA"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WormholeA/Area2D"]
-shape = SubResource("RectangleShape2D_aekrt")
-
-[node name="WormholeB" type="Node2D" parent="."]
-visible = false
-
-[node name="Wormhole" type="Sprite2D" parent="WormholeB"]
-texture_filter = 1
-texture = ExtResource("1_l7qry")
-
-[node name="Area2D" type="Area2D" parent="WormholeB"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WormholeB/Area2D"]
-shape = SubResource("RectangleShape2D_y8j2p")
-
-[connection signal="area_entered" from="WormholeA/Area2D" to="." method="_on_wormhole_a_area_entered"]
-[connection signal="area_entered" from="WormholeB/Area2D" to="." method="_on_wormhole_a_area_entered"]

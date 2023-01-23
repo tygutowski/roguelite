@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://wwqewcb72b4n"]
+[gd_scene load_steps=8 format=3 uid="uid://wwqewcb72b4n"]
 
 [ext_resource type="Texture2D" uid="uid://cqdwpmqqcp8qf" path="res://punk-tileset.png" id="1_8e6av"]
 [ext_resource type="PackedScene" uid="uid://f04q8wj5ij0q" path="res://player.tscn" id="2_086lr"]
 [ext_resource type="Texture2D" uid="uid://ibhxmw4a6o8m" path="res://crosshair.png" id="3_ipi77"]
+[ext_resource type="Texture2D" uid="uid://edpgm1npycft" path="res://crosshair-center.png" id="3_t003d"]
 [ext_resource type="Script" path="res://Crosshair.gd" id="4_6l8hs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r35sx"]
@@ -95,6 +96,10 @@ position = Vector2(8, 8)
 [node name="Camera2D" type="Camera2D" parent="Level/TileMap/CharacterBody2D"]
 current = true
 
-[node name="Crosshair" type="Sprite2D" parent="."]
-texture = ExtResource("3_ipi77")
+[node name="CrosshairDot" type="Sprite2D" parent="."]
+texture = ExtResource("3_t003d")
 script = ExtResource("4_6l8hs")
+
+[node name="CrosshairRotating" type="Sprite2D" parent="CrosshairDot"]
+texture_filter = 1
+texture = ExtResource("3_ipi77")

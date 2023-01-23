@@ -1,5 +1,5 @@
 extends Sprite2D
-
-func _process(delta):
+@onready var rotating = get_node("CrosshairRotating")
+func _process(_delta):
 	global_position = get_global_mouse_position()
-	rotate(deg_to_rad(1))
+	rotating.rotate(deg_to_rad(1))

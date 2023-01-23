@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcdosp87resai"]
+
+[ext_resource type="Script" path="res://railgun.gd" id="1_52k6g"]
+[ext_resource type="Texture2D" uid="uid://bpeoe003ar10q" path="res://railgun-sprite.png" id="2_g5tpy"]
+
+[node name="Railgun" type="Node2D"]
+visible = false
+script = ExtResource("1_52k6g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_g5tpy")
+
+[node name="Barrel" type="Node2D" parent="."]
+position = Vector2(6, -1)
+
+[node name="RayCast2D" type="RayCast2D" parent="Barrel"]
+target_position = Vector2(1000, 0)
