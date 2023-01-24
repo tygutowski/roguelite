@@ -18,7 +18,7 @@ var x_axis
 var y_axis
 var base_attack_speed = 1 # in shots per second
 var attack_speed_modifier = 1
-var first_dir_pressed = 0
+var first_dir_pressed = "none"
 
 var potential_abilities = {
 	"primary": null,
@@ -41,43 +41,43 @@ func _ready():
 	
 func get_input():
 	
-	x_axis = Input.get_action_raw_strength('right') - Input.get_action_raw_strength('left')
-	y_axis = Input.get_action_raw_strength('down') - Input.get_action_raw_strength('up')
+	x_axis = Input.get_action_raw_strength('east') - Input.get_action_raw_strength('west')
+	y_axis = Input.get_action_raw_strength('south') - Input.get_action_raw_strength('north')
 	if x_axis != 0:
 		last_x_axis = x_axis
 	if y_axis != 0:
 		last_y_axis = y_axis
-	if first_dir_pressed == 0:
+	if first_dir_pressed == "none":
 		if x_axis > 0:
-			first_dir_pressed = 2
+			first_dir_pressed = "east"
 		elif x_axis < 0:
-			first_dir_pressed = 4
+			first_dir_pressed = "west"
 		elif y_axis > 0:
-			first_dir_pressed = 3
+			first_dir_pressed = "south"
 		elif y_axis < 0:
-			first_dir_pressed = 1
+			first_dir_pressed = "north"
 	if x_axis == 0 && y_axis == 0:
-		first_dir_pressed = 0 # 0 1234 NONE NESW
+		first_dir_pressed = "none" # 0 1234 NONE NESW
 		if last_x_axis > 0: # right
-			animation_player.current_animation = "idle_right"
+			animation_player.current_animation = "idle_east"
 		elif last_x_axis < 0: # left
-			animation_player.current_animation = "idle_left"
-	if first_dir_pressed == 1: # NORTH
-		animation_player.current_animation = "run_up"
+			animation_player.current_animation = "idle_west"
+	if first_dir_pressed == "north": # NORTH
+		animation_player.current_animation = "run_north"
 		if y_axis >= 0:
-			first_dir_pressed = 0
-	elif first_dir_pressed == 2: # EAST
-		animation_player.current_animation = "run_right"
+			first_dir_pressed = "none"
+	elif first_dir_pressed == "east": # EAST
+		animation_player.current_animation = "run_east"
 		if x_axis <= 0:
-			first_dir_pressed = 0
-	elif first_dir_pressed == 3: # SOUTH
-		animation_player.current_animation = "run_down"
+			first_dir_pressed = "none"
+	elif first_dir_pressed == "south": # SOUTH
+		animation_player.current_animation = "run_south"
 		if y_axis <= 0:
-			first_dir_pressed = 0
-	elif first_dir_pressed == 4: # WEST
-		animation_player.current_animation = "run_left"
+			first_dir_pressed = "none"
+	elif first_dir_pressed == "west": # WEST
+		animation_player.current_animation = "run_west"
 		if x_axis >= 0:
-			first_dir_pressed = 0
+			first_dir_pressed = "none"
 		
 
 	else: # movement

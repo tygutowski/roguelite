@@ -11,7 +11,7 @@ size = Vector2(10, 5)
 size = Vector2(8, 11)
 
 [sub_resource type="Animation" id="Animation_wkuif"]
-resource_name = "idle_left"
+resource_name = "idle_west"
 length = 1.2
 loop_mode = 1
 tracks/0/type = "value"
@@ -40,7 +40,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_1pwpw"]
-resource_name = "idle_right"
+resource_name = "idle_east"
 length = 1.2
 loop_mode = 1
 tracks/0/type = "value"
@@ -69,7 +69,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_i2h37"]
-resource_name = "run_down"
+resource_name = "run_south"
 length = 1.2
 loop_mode = 1
 tracks/0/type = "value"
@@ -97,66 +97,8 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_7m0yk"]
-resource_name = "run_left"
-length = 1.2
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [6, 7, 8, 9, 10, 11]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_411ix"]
-resource_name = "run_right"
-length = 1.2
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [6, 7, 8, 9, 10, 11]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="Animation" id="Animation_yy1h0"]
-resource_name = "run_up"
+resource_name = "run_north"
 length = 1.2
 loop_mode = 1
 tracks/0/type = "value"
@@ -184,14 +126,72 @@ tracks/1/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_411ix"]
+resource_name = "run_east"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9, 10, 11]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_7m0yk"]
+resource_name = "run_west"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9, 10, 11]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lk5vd"]
 _data = {
-"idle_left": SubResource("Animation_wkuif"),
-"idle_right": SubResource("Animation_1pwpw"),
-"run_down": SubResource("Animation_i2h37"),
-"run_left": SubResource("Animation_7m0yk"),
-"run_right": SubResource("Animation_411ix"),
-"run_up": SubResource("Animation_yy1h0")
+"idle_east": SubResource("Animation_1pwpw"),
+"idle_west": SubResource("Animation_wkuif"),
+"run_east": SubResource("Animation_411ix"),
+"run_north": SubResource("Animation_yy1h0"),
+"run_south": SubResource("Animation_i2h37"),
+"run_west": SubResource("Animation_7m0yk")
 }
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
@@ -204,9 +204,10 @@ shape = SubResource("RectangleShape2D_54xwu")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("2_h4ymb")
+flip_h = true
 hframes = 6
 vframes = 4
-frame = 5
+frame = 6
 
 [node name="Area2D" type="Area2D" parent="."]
 visible = false
