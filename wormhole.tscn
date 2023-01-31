@@ -2,14 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://campdu4sr2yp7" path="res://wormhole.png" id="1_l7qry"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gtteu"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wxv2b"]
 
 [node name="Area2D" type="Area2D"]
 collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_gtteu")
+shape = SubResource("RectangleShape2D_wxv2b")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1

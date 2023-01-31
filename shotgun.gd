@@ -4,18 +4,20 @@ var max_ammo = 4
 var ammo = max_ammo
 var shooting = false
 
-var spread = 10.0 # in degrees
+var spread = 20.0 # in degrees
 var pellets = 4
-var projectile_speed = 5.0
-var speed_randomness = 0.5
+var projectile_speed = 10.0
+var speed_randomness = 4
+
+var frames_between_shots
+var frames_since_last_shot
 
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var pellet_scene = preload("res://pellet.tscn") 
 @onready var level = get_tree().get_first_node_in_group("level")
-var frames_between_shots
-var frames_since_last_shot
 @onready var arm = player.get_node("Arm")
 @onready var hand = arm.get_node("Hand")
+
 func _ready():
 	update_stats()
 	#global_position = player.get_node("Hand").global_position
@@ -58,10 +60,11 @@ func aim():
 		get_node("Sprite2D").flip_v = true
 func instance_pellet():
 	var projectile = pellet_scene.instantiate()
-	#projectile.rotation = rotation + randf_range(-spread/2, spread/2)
 	projectile.global_position = $Sprite2D/Barrel.global_position
 	var vector_to_mouse = (get_global_mouse_position() - arm.global_position).normalized()
-	vector_to_mouse = vector_to_mouse.rotated(deg_to_rad(randf_range(-spread/2, spread/2)))
+	var randomness = deg_to_rad(randf_range(-spread/2, spread/2))
+	vector_to_mouse = vector_to_mouse.rotated(randomness)
+	projectile.rotation = rotation + randomness
 	var speed = randf_range(projectile_speed-speed_randomness/2, projectile_speed+speed_randomness/2)
 	projectile.velocity = vector_to_mouse * speed
 	level.add_child(projectile)

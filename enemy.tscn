@@ -1,13 +1,70 @@
-[gd_scene load_steps=5 format=3 uid="uid://bo4dpftm14fcp"]
+[gd_scene load_steps=10 format=3 uid="uid://bo4dpftm14fcp"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_107ix"]
-[ext_resource type="Texture2D" uid="uid://brd8v8k7oxiv4" path="res://enemy-spritesheet.png" id="1_kiswg"]
+[ext_resource type="Texture2D" uid="uid://d0itvk3fgj8ao" path="res://enemy.png" id="2_p5pdr"]
+[ext_resource type="Material" uid="uid://cqyxdrj3qcqf5" path="res://hit_material.tres" id="2_pv3v4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vgux"]
 size = Vector2(24, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ytmb2"]
 size = Vector2(24, 32)
+
+[sub_resource type="Animation" id="Animation_1i15d"]
+resource_name = "take_damage"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_param/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_8yws1"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_jhdae"]
+resource_name = "die"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_param/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_04q7w"]
+_data = {
+"die": SubResource("Animation_jhdae"),
+"idle": SubResource("Animation_8yws1"),
+"take_damage": SubResource("Animation_1i15d")
+}
 
 [node name="Node2D" type="Node2D" groups=["enemy"]]
 script = ExtResource("1_107ix")
@@ -26,4 +83,18 @@ shape = SubResource("RectangleShape2D_ytmb2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("1_kiswg")
+material = ExtResource("2_pv3v4")
+texture = ExtResource("2_p5pdr")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -25.0
+offset_top = -42.0
+offset_right = 25.0
+offset_bottom = -16.0
+text = "health"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_04q7w")
+}

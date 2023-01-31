@@ -34,13 +34,11 @@ func _ready():
 	primary = load("res://shotgun.tscn").instantiate()
 	potential_abilities["primary"] = primary
 	get_node("Abilities").add_child(primary)
-	
 	secondary = load("res://pocket_wormhole.tscn").instantiate()
 	potential_abilities["secondary"] = secondary
 	get_node("Abilities").add_child(secondary)
 	
 func get_input():
-	
 	x_axis = Input.get_action_raw_strength('east') - Input.get_action_raw_strength('west')
 	y_axis = Input.get_action_raw_strength('south') - Input.get_action_raw_strength('north')
 	if x_axis != 0:
